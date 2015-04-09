@@ -30,7 +30,6 @@ $login = $password = $errLog = $errPass = "";
 			$_SESSION['login'] = $login;
 			$_SESSION['password'] = $password;
 
-			echo 'session_login: ' . $_SESSION['login'] . ' session_mdp: ' . $_SESSION['password'];
 			header('Location:/projects/mtb-client-service/pages/index.php');
 	  		exit();
 		}

@@ -1,5 +1,7 @@
- <?php  
+
+<?php  
  include("entete.php"); 
+ include("url_fonctions.php");
  include("service_fonctions.php");
  $articlesEnStock=getArticlesEnStock($log,$pass);
  $stockArticles=getStockArticles($log,$pass);
@@ -29,16 +31,25 @@
 		   </tr>  
 						    
 	<?php				
-	  
-	   if(!empty($_GET["vallibre1"])){
-	    $vallibre1=$_GET["vallibre1"];
-	
-	   $uri="http://localhost:8080/WebService/api/article/vallibre1/".$vallibre1;
-	   $response=getRequestJSON($uri,$log,$pass);
+	 if(urlAParametre("libreart1") or urlAParametre("libreart2") or urlAParametre("libreart3")){
 	   
-	  
-	  foreach($response->body->{"article"} as $article){
-	     echo '<tr>'; 
+	   if(urlAParametre("libreart1")){
+	   $libreart1=urlParametreValeur("libreart1");
+	   $uri="http://localhost:8080/WebService/api/article/libreart1/".$libreart1;
+	   $response=getRequestJSON($uri,$log,$pass); 
+       }
+	  else if(urlAParametre("libreart2")){
+	  $libreart2=urlParametreValeur("libreart2");
+	  $uri="http://localhost:8080/WebService/api/article/libreart2/".$libreart2;
+	  $response=getRequestJSON($uri,$log,$pass); 
+	  }
+	  else if(urlAParametre("libreart3")){
+	  $libreart3=urlParametreValeur("libreart3");
+	  $uri="http://localhost:8080/WebService/api/article/libreart3/".$libreart3;
+	  $response=getRequestJSON($uri,$log,$pass); 
+	  }
+	   foreach($response->body->{"article"} as $article){
+	    echo '<tr>'; 
          echo "<td> <span style='color:#ff0000;'>" .$article->codeArticleWithoutX. '</span></td>';
 		 if(isset($codeArticleTiers[$article->id])){ echo '<td>' .$codeArticleTiers[$article->id]. '</td>';} else {echo "<td></td>";}
 		 echo '<td>' .$article->libelle. '</td>';                                    
@@ -54,8 +65,8 @@
 		
 		 echo '</tr>';
        }	   
-      }
-	 
+	  }
+	  
 		?>	
 		</table>
 		</div>

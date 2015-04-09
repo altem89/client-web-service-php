@@ -9,6 +9,7 @@
 }
 
 
+
 #listeArticle{
 	margin-left:auto; 
 	margin-right:auto;
@@ -28,6 +29,7 @@
     background-color: #FF3835;
     color: #ffffff;
 	text-align: center;
+	
 }
 
 #listeArticle tr.alt td {

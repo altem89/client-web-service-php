@@ -1,8 +1,6 @@
-<?php include("entete.php"); ?>
-
 
 <?php
-
+session_start();
 if(isset($_SESSION['login'])){
 	echo 'Vous etes deja connecte !';
 	header('Location:/projects/mtb-client-service/pages/index.php ');

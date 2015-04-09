@@ -19,13 +19,13 @@
 		   </tr>  
 						    
 	<?php				
-	   include("../dependances/httpful.phar");
+	   include("service_fonctions.php");
 	   if(!empty($_POST["article"])){
 	    
 	    $articleID=$_POST["article"];
 	
 	   $uri="http://localhost:8080/WebService/api/article/".$articleID;
-	   $response= \Httpful\Request::get($uri)->send();
+	   $response=getRequestJSON($uri,$log,$pass);
 	   
 	   if(!$response->hasErrors()){
 	   foreach($response->body as $article){

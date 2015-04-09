@@ -2,9 +2,11 @@
 <tr>
 <td width="70" height="21" bgcolor="#999999"><div align="center" class="menu_haut"><font color="#CCCCCC"><a href="index.php"> Accueil </a> </font></div></td>
  <td width="1" height="21" bgcolor="#FFFFFF"><div align="center"><img border="0" src="http://www.metal-ball.com/images/pixel.gif" width="1" height="1" alt="|" /></div></td>
-<td width="200" height="21" bgcolor="#999999"><div align="center"><span class="menu_haut"><a href="liste_produits.php"> Liste des produits  </a> </span></div></td>
+<td width="200" height="21" bgcolor="#999999"><div align="center"><span class="menu_haut"><a href="liste_articles.php"> Liste des articles  </a> </span></div></td>
 <td width="1" height="21" bgcolor="#FFFFFF"><div align="center"><img border="0" src="http://www.metal-ball.com/images/pixel.gif" width="1" height="1" alt="|" /></div></td>
 <td width="200" height="21" bgcolor="#999999"><div align="center"><span class="menu_haut"><a href="familles.php"> Liste des familles </a></span> </div></td>
+ <td width="1" height="21" bgcolor="#FFFFFF"><div align="center"><img border="0" src="http://www.metal-ball.com/images/pixel.gif" width="1" height="1" alt="|" /></div></td>
+  <td width="200" height="21" bgcolor="#999999"><div align="center"><span class="menu_haut"><a href="libreart.php"> liste des libreart </a> </span></div></td>
   <td width="1" height="21" bgcolor="#FFFFFF"><div align="center"><img border="0" src="http://www.metal-ball.com/images/pixel.gif" width="1" height="1" alt="|" /></div></td>
   <td width="200" height="21" bgcolor="#999999"><div align="center"><span class="menu_haut"><a href="commandes.php"> Mes commandes  </a> </span></div></td>
 

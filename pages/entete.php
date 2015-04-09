@@ -1,6 +1,14 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
-<?php session_start(); ?>
+<?php session_start();
+if(isset($_SESSION["login"])){	
+	  $log=$_SESSION["login"];
+	  $pass=$_SESSION["password"];
+    }
+	else{
+	header('Location:/projects/mtb-client-service/pages/connexion.php');
+	}
+ ?>
 <head>
 <title>Fabricant de billes aciers, billes inox, bille céramique, bille de verre, bille plastique, bille carbone : MetalBall</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -34,6 +42,7 @@ body {
 	SCROLLBAR-ARROW-COLOR: #ffffff;
 	SCROLLBAR-TRACK-COLOR: #cccccc;
 	SCROLLBAR-DARKSHADOW-COLOR: #cccccc;	
+	font-family:Georgia;
 }
 a:link {
 	color: #FFFFFF;

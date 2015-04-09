@@ -1,5 +1,7 @@
- <?php  
+
+<?php  
  include("entete.php"); 
+ include("url_fonctions.php");
  include("service_fonctions.php");
  $articlesEnStock=getArticlesEnStock($log,$pass);
  $stockArticles=getStockArticles($log,$pass);
@@ -29,16 +31,25 @@
 		   </tr>  
 						    
 	<?php				
-	  
-	   if(!empty($_GET["vallibre1"])){
-	    $vallibre1=$_GET["vallibre1"];
-	
-	   $uri="http://localhost:8080/WebService/api/article/vallibre1/".$vallibre1;
-	   $response=getRequestJSON($uri,$log,$pass);
+	 if(urlAParametre("familleniv1") or urlAParametre("familleniv2") or urlAParametre("familleniv3")){
 	   
-	  
-	  foreach($response->body->{"article"} as $article){
-	     echo '<tr>'; 
+	   if(urlAParametre("familleniv1")){
+	   $familleniv1=urlParametreValeur("familleniv1");
+	   $uri="http://localhost:8080/WebService/api/article/familleniv1/".$familleniv1;
+	   $response=getRequestJSON($uri,$log,$pass); 
+       }
+	  else if(urlAParametre("familleniv2")){
+	  $familleniv2=urlParametreValeur("familleniv2");
+	  $uri="http://localhost:8080/WebService/api/article/familleniv2/".$familleniv2;
+	  $response=getRequestJSON($uri,$log,$pass); 
+	  }
+	  else if(urlAParametre("familleniv3")){
+	  $familleniv3=urlParametreValeur("familleniv3");
+	  $uri="http://localhost:8080/WebService/api/article/familleniv3/".$familleniv3;
+	  $response=getRequestJSON($uri,$log,$pass); 
+	  }
+	   foreach($response->body->{"article"} as $article){
+	    echo '<tr>'; 
          echo "<td> <span style='color:#ff0000;'>" .$article->codeArticleWithoutX. '</span></td>';
 		 if(isset($codeArticleTiers[$article->id])){ echo '<td>' .$codeArticleTiers[$article->id]. '</td>';} else {echo "<td></td>";}
 		 echo '<td>' .$article->libelle. '</td>';                                    
@@ -54,8 +65,8 @@
 		
 		 echo '</tr>';
        }	   
-      }
-	 
+	  }
+	  
 		?>	
 		</table>
 		</div>

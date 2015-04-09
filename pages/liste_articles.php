@@ -1,44 +1,40 @@
- <?php  
- include("entete.php"); 
- include("service_fonctions.php");
- $articlesEnStock=getArticlesEnStock($log,$pass);
- $stockArticles=getStockArticles($log,$pass);
- $codeFamille=getFamillesLibelles($log,$pass);
- $codeArticleTiers=getClientCodesArticles($log,$pass);
- $codeLibreart=getLibrearstLibelles($log,$pass);
+<?php  include("entete.php"); 
+ 
 ?>  
 
 
 		<div style="width:100%;height:200px;overflow:scroll;">
 			<table id = "listeArticle">
 			<tr>
-			<th>Code Article</th>
-			<th> Ref client </th>
-		    <th >Libelle</th>
-			<th >Type article</th>
-			<th >Familleniv1</th>
-			<th >Familleniv2</th>
-			<th >Familleniv3</th>
-			<th >Libreart1</th>
-			<th >Libreart2</th>
-            <th >Libreart3</th>
-             <th> Vallibre1 </th>
-             <th> Stock </th>		
+			<th><div class="th-inner">Code Article </div></th>
+			<th> <div class="th-inner">Ref client </div></th>
+		    <th> <div class="th-inner">Libelle</div></th>
+			<th> <div class="th-inner">Type article</div></th>
+			<th> <div class="th-inner">Familleniv1</div></th>
+			<th><div class="th-inner">Familleniv2</div></th>
+			<th><div class="th-inner">Familleniv3</div></th>
+			<th><div class="th-inner">Libreart1</div></th>
+			<th><div class="th-inner">Libreart2</div></th>
+            <th><div class="th-inner">Libreart3</div></th>
+            <th><div class="th-inner"> Vallibre1 </div></th>
+            <th><div class="th-inner"> Stock </div></th>			 
 			
 
 		   </tr>  
 						    
 	<?php				
-	  
-	   if(!empty($_GET["vallibre1"])){
-	    $vallibre1=$_GET["vallibre1"];
-	
-	   $uri="http://localhost:8080/WebService/api/article/vallibre1/".$vallibre1;
-	   $response=getRequestJSON($uri,$log,$pass);
+	    include("service_fonctions.php");
 	   
-	  
-	  foreach($response->body->{"article"} as $article){
-	     echo '<tr>'; 
+	   
+	   $articlesEnStock=getArticlesEnStock($log,$pass);
+	   $stockArticles=getStockArticles($log,$pass);
+	   $codeFamille=getFamillesLibelles($log,$pass);
+	   $codeArticleTiers=getClientCodesArticles($log,$pass);
+	   $codeLibreart=getLibrearstLibelles($log,$pass);
+	      
+	   
+	   foreach($articlesEnStock->body->{"article"} as $article){
+	    echo '<tr>'; 
          echo "<td> <span style='color:#ff0000;'>" .$article->codeArticleWithoutX. '</span></td>';
 		 if(isset($codeArticleTiers[$article->id])){ echo '<td>' .$codeArticleTiers[$article->id]. '</td>';} else {echo "<td></td>";}
 		 echo '<td>' .$article->libelle. '</td>';                                    
@@ -54,8 +50,7 @@
 		
 		 echo '</tr>';
        }	   
-      }
-	 
+
 		?>	
 		</table>
 		</div>

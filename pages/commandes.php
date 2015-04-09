@@ -18,14 +18,15 @@
 <th> MONTANT TTC </th>
 <th> DEVISE </th>
 <th> DATE COMMANDE</th>
+<th> FACTURE </th>
 
 </tr>
 
 <?php			
-	   include("../dependances/httpful.phar");
+	   include("REST_fonctions.php");
 	   
 	   $uri="http://localhost:8080/WebService/api/user/commande/";
-	   $response= \Httpful\Request::get($uri)->authenticateWith($log,$pass)->send();
+	   $response= getRequestJSON($uri,$log,$pass);
 	   
 	   foreach($response->body->{"commande"} as $commande){
 	   echo '<tr>';
@@ -40,6 +41,7 @@
 	   echo '<td>'.$commande->montantTTC.'</td>';
    	   echo '<td>'.$commande->devise.'</td>';
 	   echo '<td>'.$commande->dateCreation.'</td>';
+	   echo "<td>  <a href='facture.php?numero=".$commande->numero."'><span style='color:#ff0000;'> Telecharger<span></a></td>";
 	   echo '</tr>';
 	   }
 	   
@@ -47,7 +49,7 @@
 		</table>
 		</div>
 		<?php } else{
-		             echo "VOUS DEVEZ ETRE CONNECTE";
+		             echo "<div align='center'><h2> VOUS DEVEZ ETRE CONNECTE </h2></div>";
 		}
 		?>
 	<?php include("footer.php"); ?>
